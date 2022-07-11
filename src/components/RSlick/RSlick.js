@@ -32,10 +32,9 @@ export default class MultipleRows extends Component {
     //Render Danh Sách Phim
     renderPhim = () =>{
         return this.props.arrPhim.map((item,index) =>{
-            console.log(item);
-            return <div key={index}> 
+            return (<div key={index}> 
                 <Film phim={item}></Film>
-            </div>
+            </div>)
         })
     }
 
@@ -57,19 +56,20 @@ export default class MultipleRows extends Component {
         return (
             <div>
                 <Slider {...settings}>
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    {this.renderPhim()}
-                    
+                    {this.renderPhim()}             
+                    {this.renderPhim()}      
+                    {this.renderPhim()}      
+                    {this.renderPhim()}             
+                    {this.renderPhim()}             
+                    {this.renderPhim()}             
+                    {this.renderPhim()}             
+                    {this.renderPhim()}             
+                    {this.renderPhim()}        
+                    {this.renderPhim()}             
+                    {this.renderPhim()}             
+                    {this.renderPhim()}             
+
+
                 </Slider>
             </div>
         );

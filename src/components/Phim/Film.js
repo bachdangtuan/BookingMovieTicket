@@ -1,35 +1,24 @@
 import React from 'react'
 
 export default function Film(props) {
+    const { phim } = props;
+    console.log(phim);
     return (
-        <div className="my-1 px-1 w-full">
-            <article className="overflow-hidden rounded-lg shadow-lg">
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random" />
-                </a>
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black" href="#">
-                            Article Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-black" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random" />
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart" />
-                    </a>
-                </footer>
-            </article>
+        <div className="my-2 px-2 w-full cursor-pointer">
+            <div className="shadow-lg group rounded-md  bg-black relative justify-center items-center  mx-auto content-div p-0">
+                <article className="overflow-hidden rounded-lg shadow-lg group-hover:opacity-40">
+                    <div className="h-full w-full">
+                        <img alt="Placeholder" className="block max-h-80 w-full" src={phim.hinhAnh} />
+                    </div>
+                </article>
+                <div className="absolute  fd-sh opacity-0 group-hover:opacity-100 bottom-14 left-5">
+                    <p className="text-xl font-bold text-center text-white  tracking-wider leading-relaxed font-sans">{phim.tenPhim}</p>
+                    <div className="text-center">
+                        <button className="text-center rounded-md p-2 w-20  bg-red-600  text-white font-bold"><i className="fa-solid fa-play m-auto text-lg top-0 "></i></button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     )
 }
