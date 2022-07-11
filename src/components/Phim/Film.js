@@ -11,12 +11,13 @@ export default function Film(props) {
                         <img alt="Placeholder" className="block max-h-80 w-full" src={phim.hinhAnh} />
                     </div>
                 </article>
-                <div className="absolute  fd-sh opacity-0 group-hover:opacity-100 bottom-14 left-5">
+                <div className="absolute opacity-0 fd-sh group-hover:opacity-100 bottom-9 left-5">
                     <p className="text-md font-bold text-center text-white  tracking-wider leading-relaxed font-sans">{phim.tenPhim}</p>
-                    <div className="text-center">
-                        <button className="text-center rounded-md p-2 w-20 mr-2 bg-red-600  text-white font-bold"><i className="fa-solid fa-play m-auto text-lg top-0 "></i></button>
-                        <button className="text-center rounded-md p-2 w-20 mr-2 bg-red-600  text-white font-bold"><i className="fa-solid fa-play m-auto text-lg top-0 "></i></button>
-                          <button className="text-center rounded-md p-2 w-20  bg-red-600  text-white font-bold"><i className="fa-solid fa-play m-auto text-lg top-0 "></i></button>
+                    <div className="text-center grid grid-cols-4 gap-2 grid-flow-row ">
+                        <div class=" bg-white col-start-1 col-end-3">Xem Chi Tiết</div>
+                        <div class=" bg-white">Đặt Vé</div>
+                        <div class=" bg-white">Trailer</div>
+                   
                     </div>
                 </div>
             </div>
