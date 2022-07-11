@@ -1,0 +1,7 @@
+.page-header {
+    width: 100%;
+    margin: 0 auto;
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-top.png) repeat-x scroll left bottom transparent;
+    background-size: 10px 135px;
+    height: 135px;
+}
