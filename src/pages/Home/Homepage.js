@@ -1,15 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
 import HomeMenu from './HomeMenu'
 import RSlick from '../../components/RSlick/RSlick'
 import './HomeCSS/Home.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { layDanhSachPhim } from '../../redux/actions/layDanhSachPhimAction';
+
 
 export default function Homepage(props) {
-
+  const dispatch = useDispatch();
 
   //Kết nối redux lấy dữ liệu
   const { arrPhim } = useSelector(state => state.QuanLyPhimReducer)
-
+  //Lấy danh sách phim
+  useEffect(()=>{
+    const action = layDanhSachPhim;
+    dispatch(action)
+  },[])
+  
 
   return (
 

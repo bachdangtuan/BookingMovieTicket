@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function Film(props) {
     const { phim } = props;
-    console.log(phim);
     return (
         <div className="my-2 px-2 w-full cursor-pointer">
             <div className="shadow-lg group rounded-md  bg-black relative justify-center items-center  mx-auto content-div p-0">

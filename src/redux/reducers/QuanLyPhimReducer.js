@@ -1,3 +1,5 @@
+import { LAY_DANH_SACH_PHIM } from "../types/LayPhimType"
+
 const stateDefautl = {
     arrPhim: [
         {
@@ -20,7 +22,10 @@ const stateDefautl = {
 export const QuanLyPhimReducer = (state = stateDefautl, action) =>{
     switch (action.type){
 
-  
+        case LAY_DANH_SACH_PHIM:{
+            state.arrPhim = action.arrPhim
+            return{...state}
+        }
         default: return {...state}
     }
 }
