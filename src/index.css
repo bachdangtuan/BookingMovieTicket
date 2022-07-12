@@ -4,12 +4,39 @@
 
 
 
-.ant-carousel .slick-dots-bottom{
+.ant-carousel .slick-dots-bottom {
     margin: auto !important;
 }
-.slick-prev{
+
+.slick-prev {
     left: -45px !important;
 }
-.ant-carousel{
+
+.ant-carousel {
     background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg_c_bricks.png) repeat-x scroll 0 20px rgba(0, 0, 0, 0);
+}
+
+.ant-tabs-tab-active h2 {
+    color: crimson !important;
+}
+
+.ant-tabs-tab-active p {
+    color: crimson !important;
+}
+
+.ant-tabs-ink-bar {
+    background: crimson !important;
+}
+
+/* Slick List */
+.slick-list {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border-radius: 4rem;
+}
+
+.test {
+    border: 4px solid;
+    border-image: linear-gradient(45deg, rgba(255, 0, 0, 0.822), rgb(25, 25, 26)) 10;
+
+
 }

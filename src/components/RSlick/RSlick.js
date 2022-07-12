@@ -39,7 +39,7 @@ const MultipleRows = (props) => {
 
   //Render Danh Sách Phim
   const renderPhim = () => {
-    return props.arrPhim?.map((item, index) => {
+    return props.arrPhim?.slice(2,22).map((item, index) => {
       console.log(item);
       return (<div key={index}>
         <Film phim={item}></Film>
@@ -74,19 +74,20 @@ const MultipleRows = (props) => {
     prevArrow: <SamplePrevArrow />
   };
   return (
-    <div className="2xl:container 2xl:m-auto" style={{
-      width:'80%'
+    <div className="2xl:container 2xl:m-auto xl:container md:m-auto md:container sm:m-auto sm-container" style={{
+      width: '80%'
     }}>
       <div className="text-center pb-4">
-        <button className="bg-red-500 p-2 text-white font-semibold rounded-lg mr-2 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300" onClick={() => {
+        <button type="button" class="inline-block px-6 py-2.5 mr-2 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-black focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg" onClick={() => {
           actionPhimDangChieu()
         }}> PHIM ĐANG CHIẾU</button>
-        <button className="bg-red-500 p-2 text-white font-semibold rounded-lg  hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300" onClick={() => {
+
+        <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-black focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg   " onClick={() => {
           actionPhimSapChieu()
         }} > PHIM SẮP CHIẾU</button>
 
       </div>
-      <Slider {...settings}>
+      <Slider {...settings} class>
         {renderPhim()}
       </Slider>
     </div>

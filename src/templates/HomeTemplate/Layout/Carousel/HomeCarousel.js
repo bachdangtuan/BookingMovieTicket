@@ -41,17 +41,18 @@ const App = (props) => {
   const renderCarousel = () => {
     return arrImg.map((item, index) => {
       const contentStyle = {
-        height: '490px',
+        height: '450px',
         color: '#fff',
         lineHeight: '490px',
         textAlign: 'center',
+        
         // backgroundImage: "url(" + "https://i.pinimg.com/originals/ab/44/7e/ab447e2e37d61d4c68c4a00721c9e2e0.jpg" + ")",
         // backgroundPosition: 'center',
         // backgroundSize: 'cover'
 
       };
       return <div key={index}>
-        <div style={contentStyle} className="sm:h-10 pt-2" >
+        <div style={contentStyle} className="sm:h-10 pt-2 m-auto" >
           <img src={item.hinhAnh} alt="123" className="w-75 h-full m-auto rounded-2xl border " />
         </div>
       </div>
