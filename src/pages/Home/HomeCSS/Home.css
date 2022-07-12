@@ -14,3 +14,16 @@
     width: 425px;
     height: 60px;
 }
+
+.title-cgv-opening-site {
+    width: 100%;
+    background:#ff4d4f;
+    position: relative;
+    display: inline-block;
+}
+.gs-special-event-en h2 {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/gs-specail-event-en.png) no-repeat scroll center center / 322px 35px #FDFCF0;
+    display: inline-block;
+    width: 425px;
+    height: 60px;
+}

@@ -1,31 +1,36 @@
-import { LAY_DANH_SACH_PHIM } from "../types/LayPhimType"
+import { LAY_DANH_SACH_PHIM, SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from "../types/LayPhimType"
 
 const stateDefautl = {
-    arrPhim: [
-        {
-            "maPhim": 10541,
-            "tenPhim": "AVATAR : DÒNG CHẢY CỦA NƯỚC 2023",
-            "biDanh": "avatar-dong-chay-cua-nuoc-2023",
-            "trailer": "https://www.youtube.com/watch?v=oeRG9A6bDdY",
-            "hinhAnh": "https://movieapi.cyberlearn.vn/hinhanh/meo-di-hia-dieu-uoc-cuoi-cung_gp01.jpg",
-            "moTa": "Lấy bối cảnh sau hơn một thập kỷ kể từ phần phim đầu tiên, Avatar: Dòng Chảy Của Nước kể về câu chuyện của gia đình Sully (Jake, Neytiri, và con của họ), những vấn đề xung quanh họ, những nỗ lực để bảo vệ sự an toàn của gia đình, những cuộc chiến sinh tồn, và những hiểm họa mà họ phải đối mặt.",
-            "maNhom": "GP01",
-            "ngayKhoiChieu": "2020-10-10T00:00:00",
-            "danhGia": 10,
-            "hot": true,
-            "dangChieu": true,
-            "sapChieu": true
-        }
-    ]
+    arrPhim: [ ],
+    // dangChieu: true,
+    // sapChieu:true,
+    arrPhimDefault: [],
 }
 
 export const QuanLyPhimReducer = (state = stateDefautl, action) =>{
     switch (action.type){
 
         case LAY_DANH_SACH_PHIM:{
-            state.arrPhim = action.arrPhim
-            return{...state}
+            state.arrPhim = action.arrPhim;
+
+
+            state.arrPhimDefault = state.arrPhim;
+            return {...state}
+         
         }
+
+        case SET_PHIM_DANG_CHIEU:{
+            state.arrPhim = state.arrPhimDefault.filter(phim => phim.dangChieu === true)
+            console.log('Phim Dang Chieu', state.arrPhim);
+            return {...state}
+        }
+        case SET_PHIM_SAP_CHIEU:{
+            state.arrPhim = state.arrPhimDefault.filter(phim => phim.sapChieu === true)
+            console.log('Phim Sap Chieu', state.arrPhim);
+            return {...state}
+        }
+
         default: return {...state}
     }
+
 }

@@ -52,7 +52,7 @@ const App = (props) => {
       };
       return <div key={index}>
         <div style={contentStyle} className="sm:h-10 pt-2" >
-          <img src={item.hinhAnh} alt="123" className="w-75 h-full m-auto rounded-2xl border" />
+          <img src={item.hinhAnh} alt="123" className="w-75 h-full m-auto rounded-2xl border " />
         </div>
       </div>
     })
