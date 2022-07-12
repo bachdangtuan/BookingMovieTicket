@@ -1,7 +1,10 @@
 import { Tabs } from 'antd';
-import React, { useState } from 'react';
+import React, { Fragment, useState, useEffect} from 'react';
 import './HomeCSS/Home.css'
-
+import { NavLink } from 'react-router-dom';
+import moment from 'moment';
+import { useSelector, useDispatch } from 'react-redux';
+import { layDanhSachRapAction } from '../../redux/actions/layDanhSachCumRapAction';
 
 
 const { TabPane } = Tabs;
@@ -9,26 +12,89 @@ const App = () => {
   const [tabPosition] = useState('left');
 
 
-  return (
-    <>
+  const dispatch = useDispatch();
 
-      <div class="gs-special-event-en home-title">
+  useEffect(() => {
+    dispatch(layDanhSachRapAction())
+  }, [])
+
+  //Kết nối redux lấy dữ liệu
+  const { arrRap } = useSelector(state => state.QuanLyCumRapReducer)
+  console.log(arrRap);
+
+  // Render Cụm Rạp
+  const renderCumRap = () => {
+    return arrRap.map((sp, index) => {
+      return <TabPane tab={
+
+        <Fragment>
+          <img className="rounded-md pb-2" width={50} src={sp.logo}></img>
+        </Fragment>
+
+      } key={index}>
+        <Tabs tabPosition={tabPosition}>
+          {sp.lstCumRap?.splice(0,5).map((rap, index) => {
+            return <TabPane tab={
+              <Fragment>
+                <div className="flex pb-1" style={{ width: '300px' }}>
+                  <img className="rounded-md" width={50} src={rap.hinhAnh}></img>
+                  <div className="text-left ml-2">
+                    {rap.tenCumRap}
+                    <p className="text-red-600">Chi Tiết</p>
+                  </div>
+                </div>
+              </Fragment>
+
+            } key={index}>
+              {rap?.danhSachPhim.splice(0,4).map((phim, index) => {
+                return <Fragment key={index}>
+                  <div className="flex border-b p-3 border-gray-300" >
+                    <img className="rounded-md" style={{
+                          width: '60px',
+                          height: '80px'
+                    }}  src={phim.hinhAnh} alt={phim.tenPhim} onError={(e) => {
+                      e.target.onerror = null; e.target.src = "https://picsum.photos/75/75"
+                    }}></img>
+                    <div>
+                      <h2 className="ml-2 text-xl">{phim.tenPhim}</h2>
+                      <div className="grid grid-cols-5  gap-3 ml-2">
+                        {phim.lstLichChieuTheoPhim?.splice(0,7).map((lichChieu, index) => {
+                          return <NavLink to="/" key={index}>
+                            {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
+
+                          </NavLink>
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                 
+                </Fragment>
+
+              })}
+
+            </TabPane>
+
+
+          })}
+        </Tabs>
+      </TabPane>
+    })
+  }
+
+  return (
+    <Fragment>
+      <div class="gs-special-event-en home-title pb-4">
         <h2></h2>
       </div>
-
-      <Tabs tabPosition={tabPosition}>
-        <TabPane tab={<img src="https://picsum.photos/200" alt="" className='rounded-full' width={50} />} key="1">
-          Content of Tab 1
-        </TabPane>
-        <TabPane tab={<img src="https://picsum.photos/200" alt="" className='rounded-full' width={50} />} key="2">
-          Content of Tab 2
-        </TabPane>
-        <TabPane tab={<img src="https://picsum.photos/200" alt="" className='rounded-full' width={50} />} key="3">
-          Content of Tab 3
-        </TabPane>
+      <Tabs tabPosition={tabPosition} className="p-4 mt-5" style={{
+        width:'80%',
+        margin:'auto',
+        border: '1px solid rgba(0, 0, 0, 0.2)'
+      }}>
+        {renderCumRap()}
       </Tabs>
-
-    </>
+      <div class="gs-special-event-en home-title"> </div>
+    </Fragment>
   );
 };
 

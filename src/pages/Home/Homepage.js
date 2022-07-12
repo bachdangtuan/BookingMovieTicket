@@ -9,18 +9,18 @@ import { layDanhSachPhim } from '../../redux/actions/layDanhSachPhimAction';
 export default function Homepage(props) {
   const dispatch = useDispatch();
 
-  //Kết nối redux lấy dữ liệu
   const { arrPhim } = useSelector(state => state.QuanLyPhimReducer)
-  //Lấy danh sách phim
-  useEffect(()=>{
+  //Lấy danh sách phim và danh sách cụm rạp
+  useEffect(() => {
     const action = layDanhSachPhim;
-    dispatch(action)
-  },[])
-  
+    dispatch(action);
+
+  }, [])
+
 
   return (
 
-    <div className='2xl:container 2xl:m-auto'>
+    <div className='2xl:container md:container md:m-auto lg:container lg:m-auto 2xl:m-auto'>
       <div className=" my-12 mx-auto px-4 md:px-12">
         <div class="home-movie-selection">
           <div class="home-title">

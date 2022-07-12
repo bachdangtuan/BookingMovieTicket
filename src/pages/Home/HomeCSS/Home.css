@@ -2,7 +2,8 @@
     background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg_h3_line.jpg) repeat-x scroll left center rgba(0, 0, 0, 0);
     height: 60px;
     text-align: center;
-    width: 100%;
+    width: 80%;
+    margin: auto;
 }
 .home-movie-selection {
     margin: 20px 0;
