@@ -1,9 +1,9 @@
-
-.box-vien{
+.box-vien {
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 2.25);
-	border-radius: 0.5rem; /* 8px */
+    border-radius: 0.5rem;
+    /* 8px */
 }
 
-.antd__custom{
+.antd__custom {
     margin: auto !important;
 }

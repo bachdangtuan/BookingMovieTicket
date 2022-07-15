@@ -20,6 +20,7 @@ const App = () => {
 
   //Kết nối redux lấy dữ liệu
   const { arrRap } = useSelector(state => state.QuanLyCumRapReducer)
+  console.log(arrRap);
 
   // Render Cụm Rạp
   const renderCumRap = () => {
@@ -49,7 +50,7 @@ const App = () => {
             } key={index}>
               {rap?.danhSachPhim.splice(0, 4).map((phim, index) => {
                 return <Fragment key={index}>
-                  <div className="flex border-b p-3 border-gray-300 " >
+                  <div className="flex border-b p-3 border-rose-200 " >
                     <img className="rounded-md" style={{
                       width: '60px',
                       height: '80px'
@@ -62,9 +63,7 @@ const App = () => {
                         {phim.lstLichChieuTheoPhim?.splice(0, 7).map((lichChieu, index) => {
                           return <NavLink to="/" key={index}>
                             <button class="bg-red-300 focus:outline-none hover:bg-red-600 text-white font-semibold py-1 px-1 border rounded">
-
                               {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
-
                             </button>
 
                           </NavLink>
@@ -72,14 +71,9 @@ const App = () => {
                       </div>
                     </div>
                   </div>
-
                 </Fragment>
-
               })}
-
             </TabPane>
-
-
           })}
         </Tabs>
       </TabPane>
@@ -94,7 +88,8 @@ const App = () => {
       <Tabs tabPosition={tabPosition} className="p-4 mt-5 shadow-md" style={{
         width: '80%',
         margin: 'auto',
-        border: '1px solid rgba(0, 0, 0, 0.2)'
+        border: '3px solid',
+        borderImage: 'linear-gradient(45deg, rgba(255, 0, 0, 0.822), rgb(25, 25, 26)) 10'
       }}>
         {renderCumRap()}
       </Tabs>

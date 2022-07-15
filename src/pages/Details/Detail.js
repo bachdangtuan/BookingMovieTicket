@@ -6,19 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { layThongTinLichChieuAction } from '../../redux/actions/layThongTinLichChieuAction'
 import { useEffect } from 'react';
 import moment from 'moment';
+import { NavLink } from 'react-router-dom'
 import detailStyle from '../../pages/Details/Details.module.css'
 
+const { TabPane } = Tabs;
 
-
-export default function Detail(props) {
-
-    console.log(detailStyle);
-    const percentage = 66;
+const Detail = (props) => {
 
     const { filmDetail } = useSelector(state => state.QuanLyPhimReducer)
-
-    console.log(filmDetail);
     const dispatch = useDispatch();
+
+    const heThongRap = filmDetail.heThongRapChieu
+    console.log('heThongRap', heThongRap);
 
     useEffect(() => {
         //lấy theo paramsmeter từ path link, bóc tách phần tử
@@ -31,16 +30,15 @@ export default function Detail(props) {
         }
     }, [])
 
-
     return (
-        <div>
+        <div className=''>
             <div style={{
                 backgroundImage: `url(${filmDetail.hinhAnh})`,
-                backgroundSize: '100%',
+                backgroundSize: 'contain',
                 backgroundPosition: 'center',
                 minHeight: '60vh'
             }}>
-                <div className="h-full w-full bg-gray-300 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 border border-gray-100" style={{ minHeight: '60vh' }}>
+                <div className="bg-gray-700 bg-opacity-95 shadow-2xl" style={{ minHeight: '60vh' }}>
                     <div className="grid grid-cols-12 z-30 " style={{
                         paddingTop: '5%'
                     }}>
@@ -61,58 +59,72 @@ export default function Detail(props) {
                 </div>
             </div>
             <div style={{
-                     minHeight: '40vh'
-            }} className="h-full w-full bg-gray-300 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 border border-gray-100 ">
-                <div className='container'>
-                    {lichDatChieu()}
+                minHeight: '40vh'
+            }} className=" bg-opacity-30">
+                <div className='2xl:container md:container md:m-auto lg:container lg:m-auto 2xl:m-auto py-10'>
+                    <div className="m-auto p-4 test" style={{
+                        width: '66.3%',
+                        border: '3px solid',
+                        borderImage: 'linear-gradient(45deg, rgba(255, 0, 0, 0.822), rgb(25, 25, 26)) 10',
+                        boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)'
+                    }}>
+                        <Tabs defaultActiveKey="1" centered>
+                            <TabPane tab={
+                                <div className="uppercase font-semibold text-lg">
+                                   Lịch Chiếu
+                                </div>
+                            } key="1">
+                                <Tabs tabPosition='left'>
+                                    {filmDetail.heThongRapChieu?.map((htr, index) => {
+                                        return <TabPane tab={<div> <img src={htr.logo} alt="logo" width={50} style={{
+                                            height:'80px',
+                                            width:'80px'
+                                        }} /> </div>} key={index}>
+                                            {htr?.cumRapChieu.map((cumRap, index) => {
+                                                return <div key={index} className='flex flex-row  p-3 border-b border-rose-100' >
+                                                    <img src={cumRap.hinhAnh} alt="logo" height={20} className='mr-2' style={{
+                                                        height:'90px'
+                                                    }} />
+                                                    <div>
+                                                        <h1>{cumRap.tenCumRap}</h1>
+                                                        <p>{cumRap.diaChi}</p>
+                                                        <div className='grid grid-cols-7'>
+                                                            {cumRap.lichChieuPhim?.splice(0, 5).map((lichChieu, index) => {
+                                                                return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className='col-span-1 mr-3'>
+                                                                    <button class="bg-red-300 focus:outline-none hover:bg-red-600 text-white font-semibold py-1 px-1 border rounded">
 
+                                                                     {moment(lichChieu.ngayChieuGioChieu).format('HH:MM A')}
+                                                                    </button>
+                                                                </NavLink>
+                                                            })}
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            })}
+                                        </TabPane>
+                                    })}
+
+                                </Tabs>
+                            </TabPane>
+                            <TabPane tab={
+                                <div className="uppercase font-semibold text-lg">
+                                    Thông Tin Phim
+                                </div>
+
+                            } key="2">
+                                {console.log(filmDetail)}
+                                <p>{filmDetail.moTa}</p>
+                            </TabPane>
+
+                        </Tabs>
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
 
-// Lịch Đặt Chiếu
-const lichDatChieu = () => {
-    const { TabPane } = Tabs;
-    return (
-        <div className='container pt-5' style={{
-            width: '66.3%',
-            margin: 'auto'
-        }}>
-            <ul className="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab" role="tablist">
-                <li className="nav-item" role="presentation">
-                    <a href="#tabs-home" className="text-2xl uppercase mr-5" id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab">lịch chiếu</a>
-                </li>
-                <li className="nav-item mr-2" role="presentation">
-                    <a href="#tabs-messages" className="text-2xl uppercase mr-5" id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab" aria-controls="tabs-messages" >THÔNG TIN</a>
-                </li>
-                <li className="nav-item mr-2" role="presentation">
-                    <a href="#tabs-vote" className="text-2xl uppercase" id="tabs-vote-tab" data-bs-toggle="pill" data-bs-target="#tabs-vote" role="tab"  >đánh giá</a>
-                </li>
-            </ul>
 
-            <div className="tab-content" id="tabs-tabContent">
-                <div className="tab-pane fade show active" id="tabs-home" role="tabpanel">
-                    <Tabs tabPosition={'left'}>
-                        <TabPane tab="Tab 1" key="1">
-                            Content of Tab 1
-                        </TabPane>
-                        <TabPane tab="Tab 2" key="2">
-                            Content of Tab 2
-                        </TabPane>
-                        <TabPane tab="Tab 3" key="3">
-                            Content of Tab 3
-                        </TabPane>
-                    </Tabs>
-                </div>
-                <div className="tab-pane fade" id="tabs-messages" role="tabpanel">
-                    Tab 3 content
-                </div>
-                <div className="tab-pane fade" id="tabs-vote" role="tabpanel">
-                        Đánh giá
-                </div>
-            </div>
-        </div>
-    );
-};
+export default Detail;

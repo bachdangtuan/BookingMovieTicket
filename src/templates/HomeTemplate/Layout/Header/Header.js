@@ -19,14 +19,14 @@ export default function Header() {
                     <div>
                         <ul className="hidden md:flex flex-auto space-x-2">
 
-                            <NavLink className='text-black text-3xl text-center pr-5 pt-3 ' to="/home" activeClassName='text-red-600 font-bold'>
+                            <NavLink className='text-black text-3xl font-bold text-center pr-5 pt-3 uppercase ' to="/home" activeClassName='text-red-600 font-bold'>
                                 HOME
                             </NavLink>
 
-                            <NavLink className='text-black text-3xl text-center pr-5 pt-3' to="/news" activeClassName='text-red-600 font-bold'>
+                            <NavLink className='text-black text-3xl font-bold text-center pr-5 pt-3 uppercase' to="/news" activeClassName='text-red-600 font-bold'>
                                TIN TỨC</NavLink>
 
-                            <NavLink className='text-black text-3xl text-center pr-5 pt-3' to="/contact" activeClassName='text-red-600 font-bold'>
+                            <NavLink className='text-black text-3xl font-bold text-center pr-5 pt-3 uppercase' to="/contact" activeClassName='text-red-600 font-bold'>
                                 LIÊN HỆ</NavLink>
 
                         </ul>
@@ -35,7 +35,6 @@ export default function Header() {
                         <ul className="hidden md:flex flex-auto space-x-2">
                             <li className={` text-blue-800 border border-white bg-gray-50 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded`}>
                                 <i className="fa-solid fa-right-to-bracket" />
-
                             </li>
                             <li className={` text-blue-800 border border-white bg-gray-5 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded`}>
                                 <i className="fa-regular fa-user" />

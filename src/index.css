@@ -27,8 +27,17 @@
 .ant-tabs-ink-bar {
     background: crimson !important;
 }
-.ant-tabs-nav{
-    margin: auto !important;
+.ant-tabs-left > .ant-tabs-content-holder, .ant-tabs-left > div > .ant-tabs-content-holder {
+    margin-left: -1px;
+    border-left: 2px solid #ef57572b !important;
+}
+
+.ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before {
+    position: absolute;
+    right: 0;
+    left: 0;
+    border-bottom: 2px solid #ef57572b !important;
+    content: '';
 }
 
 /* Slick List */
@@ -38,8 +47,6 @@
 }
 
 .test {
-    border: 4px solid;
+    border: 2px solid;
     border-image: linear-gradient(45deg, rgba(255, 0, 0, 0.822), rgb(25, 25, 26)) 10;
-
-
 }
