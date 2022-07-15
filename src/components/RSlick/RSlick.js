@@ -40,7 +40,6 @@ const MultipleRows = (props) => {
   //Render Danh Sách Phim
   const renderPhim = () => {
     return props.arrPhim?.slice(2,22).map((item, index) => {
-      console.log(item);
       return (<div key={index}>
         <Film phim={item}></Film>
       </div>)

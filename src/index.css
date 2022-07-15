@@ -27,6 +27,9 @@
 .ant-tabs-ink-bar {
     background: crimson !important;
 }
+.ant-tabs-nav{
+    margin: auto !important;
+}
 
 /* Slick List */
 .slick-list {

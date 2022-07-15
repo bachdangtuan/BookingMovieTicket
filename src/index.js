@@ -11,6 +11,7 @@ import "antd/dist/antd.css";
 //Import React Slick
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'tw-elements';
 
 ReactDOM.render(
   <Provider store={store}>

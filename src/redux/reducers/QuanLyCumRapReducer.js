@@ -3,7 +3,8 @@ import { LAY_CUM_RAP } from "../types/LayCumRap"
 
 const stateDefault = {
     arrRap: [],
-    lstCumRap:[]
+    lstCumRap:[],
+    filmDetail:[]
 }
 
 export const QuanLyCumRapReducer = (state = stateDefault, action) =>{
@@ -11,8 +12,6 @@ export const QuanLyCumRapReducer = (state = stateDefault, action) =>{
         case LAY_CUM_RAP:{
             state.arrRap = action.arrRap
             
-
-
             return{...state}
         }
 

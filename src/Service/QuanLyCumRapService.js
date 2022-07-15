@@ -10,6 +10,10 @@ export class QuanLyCumRapService extends baseService {
     layDanhSachCumRap = () =>{
         return this.get(`/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`)
     }
+    // Lấy thông tin lịch chiếu
+    layThongTinLichChieu = (maPhim) =>{
+        return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?maPhim=${maPhim}`)
+    }
 }
 
 
