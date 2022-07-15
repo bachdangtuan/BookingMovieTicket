@@ -18,9 +18,13 @@ export default function Film(props) {
                     <p className="text-md font-bold text-center text-white  tracking-wider leading-relaxed uppercase ">{phim.tenPhim}</p>
                     <div className="text-center grid grid-cols-4 gap-2 grid-flow-row ">
                         <Button type='danger' className="  rounded-sm font-bold  col-start-1 col-end-3">XEM CHI TIẾT</Button>
-                        <NavLink to={`/detail/${phim.maPhim}`} type='danger' className=" rounded-sm font-semibold px-1 ">BOOK</NavLink>
+                        <NavLink to={`/detail/${phim.maPhim}`} type='danger' className=" rounded-sm font-semibold px-1 ">
+                            <Button type='danger' className="  rounded-sm font-semibold ">
+                                <i className="fa-solid fa-check" />
+                            </Button>
+                        </NavLink>
                         <Button type='danger' className="  rounded-sm font-semibold ">
-                           <i className="fa-solid fa-play" />
+                            <i className="fa-solid fa-play" />
                         </Button>
                     </div>
                 </div>
