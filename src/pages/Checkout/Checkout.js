@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { USER_LOGIN } from '../../util/Settings/config'
 import _ from 'lodash'
-import { getChiTietPhongVe } from '../../redux/actions/quanLyDatVeAction'
+import { datVeAction, getChiTietPhongVe } from '../../redux/actions/quanLyDatVeAction'
 
-import { CloseSquareOutlined } from '@ant-design/icons'
+import { CloseSquareOutlined, UserOutlined } from '@ant-design/icons'
 
 import style from './Checkout.module.css'
 import './Checkout.css'
 import { DAT_VE } from '../../redux/types/quanLyDatVetype'
+import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe'
 
 
 export default function Checkout(props) {
@@ -41,9 +42,9 @@ export default function Checkout(props) {
   }, [])
 
   //Tính Tổng Tiền Ghế
-  const tongTien = danhSachGheDangDat.reduce((tongTien,ghe,index) =>{
-      return tongTien += ghe.giaVe;
-  },0)
+  const tongTien = danhSachGheDangDat.reduce((tongTien, ghe, index) => {
+    return tongTien += ghe.giaVe;
+  }, 0)
 
 
   //Render Danh Sách Ghế
@@ -54,25 +55,29 @@ export default function Checkout(props) {
       const classGheDaDat = ghe.daDat === true ? 'gheDaDat' : '';
       let classGheDangDat = '';
 
+      let classGheMinhDat = '';
+      //Mình Đặt
+      if (userLogin.taiKhoan === ghe.taiKhoanNguoiDat) {
+        classGheMinhDat = 'gheMinhDat'
+      }
+
       // Kiểm tra từng ghế Render xem có ghế đang đặt hay không
       let indexGheDD = danhSachGheDangDat.findIndex(gheDD => gheDD.maGhe === ghe.maGhe)
 
-      if (indexGheDD !=-1) {
+      if (indexGheDD != -1) {
         classGheDangDat = 'gheDangDat'
       }
 
 
       return <Fragment key={index}>
-        <button disabled={ghe.daDat} className={`ghe ${style[classGheVip]} ${classGheDangDat} ${style[classGheDaDat]}`} key={index} onClick={() => {
-
+        <button disabled={ghe.daDat} className={`ghe ${style[classGheVip]} ${classGheMinhDat} ${classGheDangDat} ${style[classGheDaDat]}`} key={index} onClick={() => {
           dispatch({
             type: DAT_VE,
             gheDuocChon: ghe
           })
-
         }} >
 
-          {ghe.daDat ? <CloseSquareOutlined /> : ghe.stt}
+          {ghe.daDat ? classGheMinhDat != '' ? <UserOutlined /> : <CloseSquareOutlined /> : ghe.stt}
 
         </button>
         {(index + 1) % 16 === 0 ? <br /> : ''}
@@ -169,7 +174,16 @@ export default function Checkout(props) {
                 <span className="text-red-500 font-bold mr-2 text-xl">!</span>
                 Vé đã mua không thể đổi hoặc hoàn tiền
               </p>
-              <div className="bg-green-500 mt-10 text-center text-white p-3 font-semibold text-xl hover:bg-green-700 transition-all duration-500 ease-in-out cursor-pointer">Đặt vé</div>
+              <div className="bg-green-500 mt-10 text-center text-white p-3 font-semibold text-xl hover:bg-green-700 transition-all duration-500 ease-in-out cursor-pointer" onClick={() => {
+                const thongTinDatVe = new ThongTinDatVe();
+                thongTinDatVe.maLichChieu = props.match.params.id;
+                thongTinDatVe.danhSachVe = danhSachGheDangDat
+
+                console.log(thongTinDatVe);
+
+                dispatch(datVeAction(thongTinDatVe))
+
+              }}>Đặt vé</div>
             </div>
           </div>
         </div>
