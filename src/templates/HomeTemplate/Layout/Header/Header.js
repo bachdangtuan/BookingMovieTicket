@@ -11,7 +11,7 @@ export default function Header() {
                 <nav className="flex justify-between 2xl:container  2xl:mx-auto   ">
                     <div className="flex items-center space-x-3">
 
-                        <NavLink to="/home" className="font-bold text-2xl leading-6 text-indigo-800">
+                        <NavLink to="/" className="font-bold text-2xl leading-6 text-indigo-800">
                             <img src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png" alt="CGV Cinemas" className="large" />
                         </NavLink>
                     </div>

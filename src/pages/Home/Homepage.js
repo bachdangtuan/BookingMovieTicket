@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import HomeMenu from './HomeMenu'
 import RSlick from '../../components/RSlick/RSlick'
 import './HomeCSS/Home.css'
@@ -6,17 +6,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import { layDanhSachPhim } from '../../redux/actions/layDanhSachPhimAction';
 import HomeCarousel from '../../templates/HomeTemplate/Layout/Carousel/HomeCarousel'
 import MidNavBar from '../../templates/HomeTemplate/Layout/MidNavbar/MidNavBar';
+import { Redirect } from 'react-router-dom';
+
 
 export default function Homepage(props) {
   const dispatch = useDispatch();
 
   const { arrPhim } = useSelector(state => state.QuanLyPhimReducer)
+ 
+ 
+
   //Lấy danh sách phim và danh sách cụm rạp
   useEffect(() => {
     const action = layDanhSachPhim;
     dispatch(action);
-
   }, [])
+
 
   return (
     <div>
@@ -33,7 +38,7 @@ export default function Homepage(props) {
         </div>
         <HomeMenu></HomeMenu>
       </div>
-
+      
     </div>
   )
 }

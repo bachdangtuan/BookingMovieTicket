@@ -20,7 +20,6 @@ const App = () => {
 
   //Kết nối redux lấy dữ liệu
   const { arrRap } = useSelector(state => state.QuanLyCumRapReducer)
-  console.log(arrRap);
 
   // Render Cụm Rạp
   const renderCumRap = () => {

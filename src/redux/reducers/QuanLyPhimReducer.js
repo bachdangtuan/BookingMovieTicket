@@ -1,7 +1,7 @@
 import { LAY_DANH_SACH_PHIM, SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU, LAY_CHI_TIET_PHIM } from "../types/LayPhimType"
 
 const stateDefautl = {
-    arrPhim: [ ],
+    arrPhim: [],
     // dangChieu: true,
     // sapChieu:true,
     arrPhimDefault: [],
