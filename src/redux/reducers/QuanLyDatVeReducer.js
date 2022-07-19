@@ -45,7 +45,12 @@ export const QuanLyDatVeReducer = (state = stateDefault, action) => {
 
             return { ...state, danhSachGheDangDat: danhSachGheCapNhat }
         }
+        case 'DAT_VE_HOAN_TAT':{
 
+            state.danhSachGheDangDat=[]
+
+            return{...state}
+        }
 
         default: return { ...state }
     }

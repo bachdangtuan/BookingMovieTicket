@@ -32,13 +32,27 @@ export const datVeAction = (thongTinDatVe = new ThongTinDatVe) => {
 
     return async (dispatch) => {
         try {
+
+            dispatch({
+                type: 'DISPLAY_LOADING'
+            })
             const result = await quanLyDatVeService.datVe(thongTinDatVe)
-            console.log('thongTinDatVe',thongTinDatVe);
 
-            console.log(result.data.content);
+            //Đặt vé thành công gọi lại API load lại phòng vé
+            await dispatch(getChiTietPhongVe(thongTinDatVe.maLichChieu))
+            console.log("result",result);
+
+             dispatch({
+                type: 'HIDE_LOADING'
+            })
+             dispatch({
+                type: 'DAT_VE_HOAN_TAT'
+            })
         }
-        catch(error) {
-
+        catch (error) {
+            dispatch({
+                type: 'HIDE_LOADING'
+            })
             console.log(error.response?.data);
         }
 
